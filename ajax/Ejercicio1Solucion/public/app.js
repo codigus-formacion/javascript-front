@@ -2,18 +2,17 @@ const NUM_RESULTS = 3;
 
 let loadMoreRequests = 0;
 
-async function loadMore(){
+async function loadMore() {
+  const from = (loadMoreRequests + 1) * NUM_RESULTS;
+  const to = from + NUM_RESULTS;
 
-    const from = (loadMoreRequests+1) * NUM_RESULTS;
-    const to = from + NUM_RESULTS;
+  const response = await fetch(`/superheros?from=${from}&to=${to}`);
 
-    const response = await fetch(`/superheroes?from=${from}&to=${to}`);
+  const newSuperheros = await response.text();
 
-    const newSuperheroes = await response.text();
-  
-    const superheroesDiv = document.getElementById("superheroes");
+  const superheroesDiv = document.getElementById("superheros");
 
-    superheroesDiv.innerHTML += newSuperheroes;
+  superheroesDiv.innerHTML += newSuperheros;
 
-    loadMoreRequests++;
+  loadMoreRequests++;
 }

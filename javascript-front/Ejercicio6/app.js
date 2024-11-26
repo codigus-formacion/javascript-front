@@ -1,89 +1,85 @@
-let libros = [
-    {
-        titulo: 'Cien años de soledad',
-        autor: 'Gabriel García Márquez',
-        año: 1967
-    },
-    {
-        titulo: 'El señor de los anillos',
-        autor: 'J. R. R. Tolkien',
-        año: 1954
-    },
-    {
-        titulo: '1984',
-        autor: 'George Orwell',
-        año: 1949
-    },
-    {
-        titulo: 'Un mundo feliz',
-        autor: 'Aldous Huxley',
-        año: 1932
-    }]
+let books = [
+  {
+    title: "Cien años de soledad",
+    author: "Gabriel García Márquez",
+    year: 1967,
+  },
+  {
+    title: "El señor de los anillos",
+    author: "J. R. R. Tolkien",
+    year: 1954,
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    year: 1949,
+  },
+  {
+    title: "Un mundo feliz",
+    author: "Aldous Huxley",
+    year: 1932,
+  },
+];
 
-function showHideMasInfo(idLibro) {
-    let masInfoElement = document.getElementById('masinfo-libro-' + idLibro);
-    let display = masInfoElement.style.display;
-    if (display === "none") {
-        masInfoElement.style.display = "block";
-    } else {
-        masInfoElement.style.display = "none";
-    }
+function showHideMoreInfo(id) {
+  let moreInfoElement = document.getElementById("moreinfo-book-" + id);
+  let display = moreInfoElement.style.display;
+
+  if (display === "none") {
+    moreInfoElement.style.display = "block";
+  } else {
+    moreInfoElement.style.display = "none";
+  }
 }
 
-function addLibroToDOM(libro, i) {
-    let div = document.createElement("div");
-    content.appendChild(div);
+function addBookToDOOM(book, i) {
+  let div = document.createElement("div");
+  content.appendChild(div);
 
-    let pTitulo = document.createElement("p");
-    div.appendChild(pTitulo);
+  let pTitle = document.createElement("p");
+  div.appendChild(pTitle);
 
-    pTitulo.textContent = libro.titulo;
+  pTitle.textContent = book.title + " ";
 
-    let button = document.createElement("button");
-    pTitulo.appendChild(button);
-    button.textContent = "Más info";
-    button.onclick = () => showHideMasInfo(i);
+  let button = document.createElement("button");
+  pTitle.appendChild(button);
+  button.textContent = "Más info";
+  button.onclick = () => showHideMoreInfo(i);
 
-    let pMasInfo = document.createElement("p");
-    div.appendChild(pMasInfo);
+  let pMoreInfo = document.createElement("p");
+  div.appendChild(pMoreInfo);
 
-    pMasInfo.style.display = 'none';
-    pMasInfo.id = 'masinfo-libro-' + i;
-    pMasInfo.textContent = libro.autor + ' (' + libro.año + ')';
+  pMoreInfo.style.display = "none";
+  pMoreInfo.id = "moreinfo-book-" + i;
+  pMoreInfo.textContent = book.author + " (" + book.year + ")";
 }
 
-function addLibro(nuevoLibro) {
+function addBook(book) {
+  books.push(book);
 
-    libros.push(nuevoLibro);
-
-    addLibroToDOM(nuevoLibro, libros.length - 1);
-
+  addBookToDOOM(book, books.length - 1);
 }
 
-function nuevoLibro() {
+function newBook() {
+  let titleInput = document.getElementById("title");
+  let title = titleInput.value;
+  titleInput.value = "";
 
-    let tituloInput = document.getElementById('titulo');
-    let titulo = tituloInput.value;
-    tituloInput.value = '';
+  let authorInput = document.getElementById("author");
+  let author = authorInput.value;
+  authorInput.value = "";
 
-    let autorInput = document.getElementById('autor');
-    let autor = autorInput.value;
-    autorInput.value = '';
+  let yearInput = document.getElementById("year");
+  let year = yearInput.value;
+  yearInput.value = "";
 
-    let añoInput = document.getElementById('año');
-    let año = añoInput.value;
-    añoInput.value = '';
-
-    let libro = { titulo: titulo, autor: autor, año: año };
-
-    addLibro(libro);
+  addBook({ title, author, year });
 }
 
-let content = document.getElementById('content');
+let content = document.getElementById("content");
 
-for (let i = 0; i < libros.length; i++) {
+for (let i = 0; i < books.length; i++) {
+  let book = books[i];
 
-    let libro = libros[i];
-
-    addLibroToDOM(libro, i);
+  addBookToDOOM(book, i);
 }

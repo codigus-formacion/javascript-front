@@ -1,7 +1,6 @@
-function saluda() {
+function greetings() {
+  let name = document.getElementById("name").value;
 
-    let nombre = document.getElementById('nombre').value;
-
-    let content = document.getElementById('content');
-    content.innerHTML += '<p>Hola '+nombre+'!</p>';
+  let content = document.getElementById("content");
+  content.innerHTML += "<p>Hola " + name + "!</p>";
 }

@@ -1,11 +1,11 @@
-.negrita {
+.red {
+    color: #F00;
+}
+
+.bold {
     font-weight: bold;
 }
 
-.cursiva {
+.italic {
     font-style: italic;
-}
-
-.rojo {
-    color: #F00;
 }

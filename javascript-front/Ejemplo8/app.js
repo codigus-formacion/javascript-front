@@ -1,14 +1,14 @@
-function rojo(){
-    let content = document.getElementById('content');
-    content.classList.toggle('rojo');
+function red() {
+  let content = document.getElementById("content");
+  content.classList.toggle("red");
 }
 
-function negrita(){
-    let content = document.getElementById('content');
-    content.classList.toggle('negrita');
+function bold() {
+  let content = document.getElementById("content");
+  content.classList.toggle("bold");
 }
 
-function cursiva(){
-    let content = document.getElementById('content');
-    content.classList.toggle('cursiva');
+function italic() {
+  let content = document.getElementById("content");
+  content.classList.toggle("italic");
 }

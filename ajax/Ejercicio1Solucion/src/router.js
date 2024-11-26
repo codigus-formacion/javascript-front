@@ -1,27 +1,25 @@
-import express from 'express';
-import { getSuperheroes } from './superheroes.js';
+import express from "express";
+import { getSuperheros } from "./superheros.js";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
+  const superheros = getSuperheros(0, 3);
 
-    const superheroes = getSuperheroes(0,3);
-
-    res.render('index', {
-        superheroes: superheroes
-    });
+  res.render("index", {
+    superheros: superheros,
+  });
 });
 
-router.get('/superheroes', (req, res) => {
+router.get("/superheros", (req, res) => {
+  const from = parseInt(req.query.from);
+  const to = parseInt(req.query.to);
 
-    const from = parseInt(req.query.from);
-    const to = parseInt(req.query.to);
+  const superheros = getSuperheros(from, to);
 
-    const superheroes = getSuperheroes(from,to);
-
-    res.render('superheroes', {
-        superheroes: superheroes
-    });
+  res.render("superheros", {
+    superheros: superheros,
+  });
 });
 
 export default router;
