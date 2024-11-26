@@ -1,9 +1,8 @@
-let buttons = document.getElementsByTagName('button');
+let buttons = document.getElementsByTagName("button");
 
 function greet(event) {
-  console.log('Evento:', event);
-  console.log('Elemento origen: ', event.target);
-  
+  console.log("Evento:", event);
+  console.log("Elemento origen: ", event.target);
 }
 
-buttons[0].addEventListener('click', greet);
+buttons[0].addEventListener("click", greet);

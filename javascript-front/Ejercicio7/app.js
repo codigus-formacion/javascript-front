@@ -1,55 +1,52 @@
-let libros = [
-    {
-        titulo: 'Cien años de soledad',
-        autor: 'Gabriel García Márquez',
-        año: 1967
-    },
-    {
-        titulo: 'El señor de los anillos',
-        autor: 'J. R. R. Tolkien',
-        año: 1954
-    },
-    {
-        titulo: '1984',
-        autor: 'George Orwell',
-        año: 1949
-    },
-    {
-        titulo: 'Un mundo feliz',
-        autor: 'Aldous Huxley',
-        año: 1932
-    }];
+let books = [
+  {
+    title: "Cien años de soledad",
+    author: "Gabriel García Márquez",
+    year: 1967,
+  },
+  {
+    title: "El señor de los anillos",
+    author: "J. R. R. Tolkien",
+    year: 1954,
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    year: 1949,
+  },
+  {
+    title: "Un mundo feliz",
+    author: "Aldous Huxley",
+    year: 1932,
+  },
+];
 
-function mostrarPaginaLibro(id) {
+function showBookPage(id) {
+  let content = document.getElementById("content");
 
-    let content = document.getElementById('content');
+  let book = books[id];
 
-    let libro = libros[id];
+  content.innerHTML = `
+        <h2>Libro: ${book.title}</h2>
 
-    content.innerHTML = `
-        <h2>Libro: ${libro.titulo}</h2>
+        <p>Autor: ${book.author}</p>
+        <p>Año: ${book.year}</p>
 
-        <p>Autor: ${libro.autor}</p>
-        <p>Año: ${libro.año}</p>
-
-        <button onclick='mostrarPaginaLibros()'>Volver a la lista</button>
+        <button onclick='showBooksPage()'>Volver a la lista</button>
     `;
 }
 
-function mostrarPaginaLibros() {
+function showBooksPage() {
+  let content = document.getElementById("content");
 
-    let content = document.getElementById('content');
+  content.innerHTML = `<h2>Libros</h2>`;
 
-    content.innerHTML = `<h2>Libros</h2>`;
-
-    for (let i = 0; i < libros.length; i++) {
-
-        content.innerHTML +=
-            `<p>
-            ${libros[i].titulo}
-            <button onclick="mostrarPaginaLibro(${i});">Más info</button>            
+  for (let i = 0; i < books.length; i++) {
+    content.innerHTML += `<p>
+            ${books[i].title}
+            <button onclick="showBookPage(${i});">Más info</button>            
         </p>`;
-    }
+  }
 }
 
-mostrarPaginaLibros();
+showBooksPage();

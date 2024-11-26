@@ -1,43 +1,44 @@
-let libros = [
-    {
-        titulo: 'Cien años de soledad',
-        autor: 'Gabriel García Márquez',
-        año: 1967
-    },
-    {
-        titulo: 'El señor de los anillos',
-        autor: 'J. R. R. Tolkien',
-        año: 1954
-    },
-    {
-        titulo: '1984',
-        autor: 'George Orwell',
-        año: 1949
-    },
-    {
-        titulo: 'Un mundo feliz',
-        autor: 'Aldous Huxley',
-        año: 1932
-    }]
+let books = [
+  {
+    title: "Cien años de soledad",
+    author: "Gabriel García Márquez",
+    year: 1967,
+  },
+  {
+    title: "El señor de los anillos",
+    author: "J. R. R. Tolkien",
+    year: 1954,
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    year: 1949,
+  },
+  {
+    title: "Un mundo feliz",
+    author: "Aldous Huxley",
+    year: 1932,
+  },
+];
 
-function showHideMasInfo(idLibro) {
-    let masInfoElement = document.getElementById('masinfo-libro-' + idLibro);
-    let display = masInfoElement.style.display;
-    if (display === "none") {
-        masInfoElement.style.display = "block";
-    } else {
-        masInfoElement.style.display = "none";
-    }
+function showHideMoreInfo(id) {
+  let moreInfoElement = document.getElementById("moreinfo-book-" + id);
+  let display = moreInfoElement.style.display;
+
+  if (display === "none") {
+    moreInfoElement.style.display = "block";
+  } else {
+    moreInfoElement.style.display = "none";
+  }
 }
 
-let content = document.getElementById('content');
+let content = document.getElementById("content");
 
-for (let i = 0; i < libros.length; i++) {
+for (let i = 0; i < books.length; i++) {
+  let book = books[i];
 
-    let libro = libros[i];
-    content.innerHTML +=
-        `<div>
-            <p id="libro-${i}">${libro.titulo}<button onclick="showHideMasInfo(${i})">Más info</button></p>
-            <p style="display:none" id="masinfo-libro-${i}"> ${libro.autor} (${libro.año})</p>
+  content.innerHTML += `<div>
+            <p id="book-${i}">${book.title} <button onclick="showHideMoreInfo(${i})">Más info</button></p>
+            <p style="display:none" id="moreinfo-book-${i}"> ${book.author} (${book.year})</p>
         </div>`;
 }
