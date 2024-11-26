@@ -11,8 +11,8 @@ async function applyUppercase() {
     }),
   });
 
-  const object = await response.json();
+  const textData = await response.json();
   const content = document.getElementById("content");
 
-  content.innerHTML += object.text + " " + object.textUppercase + "<br>";
+  content.innerHTML += textData.text + " " + textData.textUppercase + "<br>";
 }

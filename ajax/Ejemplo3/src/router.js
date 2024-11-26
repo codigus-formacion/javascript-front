@@ -9,7 +9,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/textToUppercase", (req, res) => {
-  let text = req.body.text;
+  let textData = req.body;
+  let text = textData.text;
 
   let response = {
     text: text,
