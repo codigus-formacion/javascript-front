@@ -1,11 +1,9 @@
-async function loadAJAX(){
+async function loadAJAX() {
+  const response = await fetch("/pagePart");
 
-    const response = await fetch('/pagePart');
+  const pagePart = await response.text();
 
-    const pagePart = await response.text();
-  
-    const content = document.getElementById("content");
+  const content = document.getElementById("content");
 
-    content.innerHTML = pagePart;
-
+  content.innerHTML = pagePart;
 }
