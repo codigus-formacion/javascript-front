@@ -1,24 +1,22 @@
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-
-    res.render('index', {
-        name: "World"
-    });
+router.get("/", (req, res) => {
+  res.render("index", {
+    name: "World",
+  });
 });
 
-router.post('/saveRandom', (req, res) => {
+router.post("/textToUppercase", (req, res) => {
+  let text = req.body.text;
 
-    let info = req.body.key;
+  let response = {
+    text: text,
+    textUppercase: text.toUpperCase(),
+  };
 
-    let response = {
-        key: info,
-        value: Math.ceil(Math.random() * 100)
-    }
-
-    res.json(response);
+  res.json(response);
 });
 
 export default router;
