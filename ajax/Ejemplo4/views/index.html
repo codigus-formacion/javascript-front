@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <h1>Procesar el nombre y los apellidos de un usuario</h1>
+
+    <form onsubmit="processUserData(event)">
+        <label for="userName">Escribe tu nombre:</label>
+        <input type="text" name="userName" required /><br /><br />
+
+        <label for="userSurname">Escribe tu apellido:</label>
+        <input type="text" name="userSurname" required /><br /><br />
+
+        <button type="submit">Procesar</button>
+    </form>
+
+    <h2>Resultado</h2>
+    <div id="content"></div>
+</body>
+
+</html>
