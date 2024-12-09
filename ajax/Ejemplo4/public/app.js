@@ -4,7 +4,7 @@ async function processUserData(event) {
   const formData = new FormData(event.target);
   const response = await fetch(`/processUserData`, {
     method: "POST",
-    body: formData,
+    body: new URLSearchParams(formData),
   });
 
   const userData = await response.json();
