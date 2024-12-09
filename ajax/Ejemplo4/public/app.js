@@ -12,4 +12,6 @@ async function processUserData(event) {
   const content = document.getElementById("content");
   content.innerHTML = `<p>Name: ${userData.userName}</p>`;
   content.innerHTML += `<p>Username: ${userData.userSurname}</p>`;
+
+  event.target.reset();
 }
