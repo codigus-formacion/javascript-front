@@ -2,6 +2,7 @@ import express from "express";
 import { getSuperheros } from "./superheros.js";
 
 const router = express.Router();
+export default router;
 
 router.get("/", (req, res) => {
   const superheros = getSuperheros(0, 3);
@@ -22,4 +23,4 @@ router.get("/superheros", (req, res) => {
   });
 });
 
-export default router;
+

@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import fs from 'node:fs/promises';
 
-import * as boardService from './boardService.js';
+import * as boardService from './board.js';
 
 const UPLOADS_FOLDER = 'uploads';
 const DEMO_FOLDER = 'demo';
@@ -26,6 +26,8 @@ boardService.addPost({
 });
 
 const router = express.Router();
+export default router;
+
 const upload = multer({ dest: UPLOADS_FOLDER })
 
 router.get('/', (req, res) => {
@@ -74,4 +76,3 @@ router.get('/post/:id/image', (req, res) => {
 
 });
 
-export default router;

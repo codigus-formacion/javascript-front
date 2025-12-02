@@ -1,19 +1,18 @@
-import express from "express";
-import mustacheExpress from "mustache-express";
-import bodyParser from "body-parser";
-import { __dirname } from "./dirname.js";
-import router from "./router.js";
+import express from 'express';
+import mustacheExpress from 'mustache-express';
+
+import router from './router.js';
 
 const app = express();
 
-app.set("views", __dirname + "/../views");
-app.set("view engine", "html");
-app.engine("html", mustacheExpress());
+app.use(express.static('./public'));
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'html');
+app.engine('html', mustacheExpress(), ".html");
+app.set('views', './views');
 
-app.use(express.static(__dirname + "/../public"));
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/", router);
+app.use('/', router);
 
-app.listen(3000, () => console.log("Listening on port 3000!"));
+app.listen(3000, () => console.log('Web ready in http://localhost:3000/'));

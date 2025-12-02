@@ -2,7 +2,7 @@ import express from "express";
 import multer from "multer";
 import fs from "node:fs/promises";
 
-import * as boardService from "./boardService.js";
+import * as board from "./board.js";
 
 const UPLOADS_FOLDER = "uploads";
 const DEMO_FOLDER = "demo";
@@ -11,14 +11,14 @@ const DEMO_FOLDER = "demo";
 fs.cp(DEMO_FOLDER + "/post0_image.jpeg", UPLOADS_FOLDER + "/post0_image.jpeg");
 fs.cp(DEMO_FOLDER + "/post1_image.jpeg", UPLOADS_FOLDER + "/post1_image.jpeg");
 
-boardService.addPost({
+board.addPost({
   user: "Pepe",
   title: "Vendo moto",
   text: "Barata, barata",
   imageFilename: "post0_image.jpeg",
 });
 
-boardService.addPost({
+board.addPost({
   user: "Juan",
   title: "Compro coche",
   text: "Pago bien",
@@ -26,11 +26,13 @@ boardService.addPost({
 });
 
 const router = express.Router();
+export default router;
+
 const upload = multer({ dest: UPLOADS_FOLDER });
 
 router.get("/", (req, res) => {
   res.render("index", {
-    posts: boardService.getPosts(),
+    posts: board.getPosts(),
   });
 });
 
@@ -39,19 +41,19 @@ router.post("/post/new", upload.single("image"), (req, res) => {
 
   let imageFilename = req.file.filename;
 
-  let post = boardService.addPost({ user, title, text, imageFilename });
+  let post = board.addPost({ user, title, text, imageFilename });
 
   res.json(post);
 });
 
 router.get("/post/:id", (req, res) => {
-  let post = boardService.getPost(req.params.id);
+  let post = board.getPost(req.params.id);
 
   res.render("show_post", { post });
 });
 
 router.get("/post/:id/delete", (req, res) => {
-  let post = boardService.deletePost(req.params.id);
+  let post = board.deletePost(req.params.id);
 
   if (post) {
     //Delete image.
@@ -63,9 +65,8 @@ router.get("/post/:id/delete", (req, res) => {
 });
 
 router.get("/post/:id/image", (req, res) => {
-  let post = boardService.getPost(req.params.id);
+  let post = board.getPost(req.params.id);
 
   res.download(UPLOADS_FOLDER + "/" + post.imageFilename);
 });
 
-export default router;

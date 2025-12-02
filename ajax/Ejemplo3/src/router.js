@@ -1,6 +1,7 @@
 import express from "express";
 
 const router = express.Router();
+export default router;
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -10,6 +11,9 @@ router.get("/", (req, res) => {
 
 router.post("/textToUppercase", (req, res) => {
   let textData = req.body;
+
+  console.log(textData);
+
   let text = textData.text;
 
   let response = {
@@ -19,5 +23,3 @@ router.post("/textToUppercase", (req, res) => {
 
   res.json(response);
 });
-
-export default router;

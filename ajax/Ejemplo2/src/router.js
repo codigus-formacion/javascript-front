@@ -1,6 +1,7 @@
 import express from "express";
 
 const router = express.Router();
+export default router;
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -19,4 +20,3 @@ router.get("/checkInfo", (req, res) => {
   res.json(response);
 });
 
-export default router;

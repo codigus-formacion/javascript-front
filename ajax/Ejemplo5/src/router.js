@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 
 const router = express.Router();
+export default router;
 
 const upload = multer({ dest: "uploads/" });
 
@@ -30,4 +31,3 @@ router.get("/download_image", (req, res) => {
   res.download("uploads/" + filename);
 });
 
-export default router;

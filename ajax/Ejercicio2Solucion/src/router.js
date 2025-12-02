@@ -1,6 +1,7 @@
 import express from "express";
 
 const router = express.Router();
+export default router;
 
 let existingUsernames = ["user23", "pepito", "juan"];
 
@@ -22,4 +23,4 @@ router.get("/availableUsername", (req, res) => {
   res.json(response);
 });
 
-export default router;
+
